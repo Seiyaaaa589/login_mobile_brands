@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Influcio - Brand Partnership Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5a9f5 0%, #a56beb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(245, 169, 245, 0.9) 0%, rgba(165, 107, 235, 0.9) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px;
+            color: white;
+        }
+
+        .header-content h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-family: 'Google Sans', sans-serif;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+            max-width: 100%;
+        }
+
+        .content {
+            padding: 30px 25px 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo img {
+            width: 140px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .login-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-header h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+            font-family: 'Google Sans', sans-serif;
+        }
+
+        .login-header p {
+            color: #5f6368;
+            font-size: 13px;
+        }
+
+        .stats {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 15px;
+            color: #5f6368;
+            font-weight: 500;
+            line-height: 1.5;
+            font-family: 'Dancing Script', cursive;
+            padding: 10px 15px;
+            background-color: rgba(165, 107, 235, 0.08);
+            border-radius: 15px;
+            width: 100%;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            color: #5f6368;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #3c4043;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #a56beb;
+            outline: none;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #f5a9f5 0%, #a56beb 100%);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+            font-family: 'Google Sans', sans-serif;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #5f6368;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #dadce0;
+        }
+
+        .divider::before {
+            margin-right: 15px;
+        }
+
+        .divider::after {
+            margin-left: 15px;
+        }
+
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px 15px;
+            background-color: white;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #3c4043;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            font-family: 'Google Sans', sans-serif;
+        }
+
+        .social-btn:hover, .social-btn:active {
+            background-color: #f8f9fa;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+
+        .social-btn img {
+            height: 20px;
+        }
+
+        .login-link {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 13px;
+            color: #5f6368;
+        }
+
+        .login-link a {
+            color: #a56beb;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px;
+        }
+
+        .login-link a:hover, .login-link a:active {
+            text-decoration: underline;
+        }
+
+        .terms {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 11px;
+            color: #5f6368;
+            padding-top: 10px;
+        }
+
+        .terms a {
+            color: #a56beb;
+            text-decoration: none;
+            padding: 3px;
+        }
+
+        .terms a:hover, .terms a:active {
+            text-decoration: underline;
+        }
+
+        /* Add touch-friendly styles for mobile */
+        @media (hover: none) {
+            .social-btn:hover {
+                background-color: white;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            }
+            
+            .social-btn:active {
+                background-color: #f8f9fa;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            }
+            
+            .login-link a:hover {
+                text-decoration: none;
+            }
+            
+            .login-link a:active {
+                text-decoration: underline;
+            }
+            
+            .terms a:hover {
+                text-decoration: none;
+            }
+            
+            .terms a:active {
+                text-decoration: underline;
+            }
+        }
+
+        /* Adjustments for very small screens */
+        @media (max-width: 320px) {
+            .content {
+                padding: 25px 15px 30px;
+            }
+            
+            .header-image {
+                height: 150px;
+            }
+            
+            .header-content h2 {
+                font-size: 20px;
+            }
+            
+            .header-content p {
+                font-size: 12px;
+            }
+            
+            .login-header h1 {
+                font-size: 20px;
+            }
+            
+            .stats {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+            
+            .form-group input {
+                padding: 10px 12px;
+            }
+            
+            .btn-primary {
+                padding: 12px 16px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-image">
+            <div class="header-content">
+                <h2>Find Perfect Creators for Your Brand</h2>
+                <p>Connect with quality creators, enhance marketing impact, drive business growth</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="logo">
+                <img src="https://i.imgur.com/WYR3c9q.png" alt="Influcio Logo">
+            </div>
+            <div class="login-header">
+                <h1>Create Brand Account</h1>
+                <p>Start finding creators perfect for your brand</p>
+            </div>
+            <div class="stats">
+                Connecting over 1,780,000+ highly engaging creators with 200B+ international brands
+            </div>
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" name="company" placeholder="Enter your company name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Set password (at least 8 characters)" required>
+                </div>
+                <button type="submit" class="btn-primary">Create Account</button>
+                
+                <div class="divider">or</div>
+                
+                <div class="social-login">
+                    <button type="button" class="social-btn google-btn">
+                        <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg" alt="Google logo">
+                    </button>
+                    <button type="button" class="social-btn ms-btn">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/512px-Microsoft_logo.svg.png" alt="Microsoft logo">
+                    </button>
+                </div>
+                
+                <div class="login-link">
+                    Already have an account? <a href="#">Log in</a>
+                </div>
+            </form>
+            
+            <div class="terms">
+                By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Form submission handler
+         * @param {Event} e - Form submission event
+         */
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // In a real application, this would send data to the server
+            console.log('Submitted data:', { name, company, email, password });
+            alert('Account creation request submitted! In a real application, this would process the registration.');
+        });
+        
+        /**
+         * Google login button click handler
+         */
+        document.querySelector('.google-btn').addEventListener('click', function() {
+            alert('Google login would be integrated here. This is just a demo.');
+            // In a real implementation, this would initialize and call the Google Sign-In API
+        });
+        
+        /**
+         * Microsoft login button click handler
+         */
+        document.querySelector('.ms-btn').addEventListener('click', function() {
+            alert('Microsoft login would be integrated here. This is just a demo.');
+            // In a real implementation, this would initialize and call the Microsoft login API
+        });
+        
+        /**
+         * Login link click handler
+         */
+        document.querySelector('.login-link a').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Login functionality would be implemented here.');
+        });
+    </script>
+</body>
+</html> 
